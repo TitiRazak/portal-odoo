@@ -1,0 +1,49 @@
+<odoo>
+    <data>
+
+        <record id="res_partner_tree_inherit" model="ir.ui.view">
+            <field name="name">res.partner.tree.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='email']"
+                       position="after">
+                    <field name="currency_id" invisible="1"/>
+                    <field name="sales_values" widget="monetary" optional="hide"/>
+                    <field name="sales_count" optional="hide"/>
+                    <field name="badge" optional="hide"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="res_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']"
+                       position="after">
+                    <field name="sales_values" widget="monetary"/>
+                    <field name="sales_count"/>
+                    <field name="badge"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="res_partner_search_inherit" model="ir.ui.view">
+            <field name="name">res.partner.search.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/filter[@name='type_company']" position="after">
+                    <filter string="Roi/reine du sport" name="type_badge_king" domain="[('badge', '=','king')]"/>
+                    <filter string="Waterman/woman" name="type_badge_water" domain="[('badge', '=','water')]"/>
+                </xpath>
+                <xpath expr="//search/group/filter[@name='group_country']" position="after">
+                    <filter string="Badge" name="group_bagde" domain="[]" context="{'group_by': 'badge'}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

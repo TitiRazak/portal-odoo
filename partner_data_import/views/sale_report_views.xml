@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+        <record id="sales_search_inherit" model="ir.ui.view">
+            <field name="name">sales.search.inherit</field>
+            <field name="model">sale.report</field>
+            <field name="inherit_id" ref="sale.view_order_product_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/filter[@name='Sales']" position="after">
+                    <filter string="Roi/reine du sport" name="type_badge_king"
+                            domain="[('badge', '=','king')]"/>
+                    <filter string="Waterman/woman" name="type_badge_water"
+                            domain="[('badge', '=','water')]"/>
+                </xpath>
+                <xpath expr="//search/group/filter[@name='industry_id']" position="before">
+                    <filter string="Badge" name="group_bagde" domain="[]"
+                            context="{'group_by': 'badge'}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

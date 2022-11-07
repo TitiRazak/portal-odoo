@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+    <templates id="template" xml:space="preserve">
+        <t t-name="ClientLine" t-inherit="point_of_sale.ClientLine" t-inherit-mode="extension" owl="1">
+            <xpath expr="//td[hasclass('client-line-email')]" position="after">
+                 <td>
+                    <t t-esc="props.partner.badge or ''"/>
+                     <span t-if="highlight"><br/></span>
+                </td>
+            </xpath>
+        </t>
+    </templates>
