@@ -7,11 +7,6 @@
     'description': """
         Manage data import
     """,
-    'author': "KASIA",
-    'website': "https://www.kasia.mg",
-    'category': 'Uncategorized',
-    'version': '0.1',
-
     # any module necessary for this one to work correctly
     'depends': ['base', 'sale', 'portal', 'point_of_sale'],
 
